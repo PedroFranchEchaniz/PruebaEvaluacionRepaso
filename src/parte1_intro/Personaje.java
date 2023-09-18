@@ -8,17 +8,19 @@ public class Personaje {
 	private String name;
 	private int life;
 	private int score;
+	private int puntosFuerza;
 	private String[] mochila = new String[10];
 
 	public Personaje() {
 		super();
 	}
 
-	public Personaje(String name, String[] mochila) {
+	public Personaje(String name, int puntosFuerza, String[] mochila) {
 		super();
 		this.name = name;
 		this.life = 100;
 		this.score = 0;
+		this.puntosFuerza = puntosFuerza;
 		this.mochila = mochila;
 	}
 
@@ -52,16 +54,26 @@ public class Personaje {
 
 	public void setMochila(String[] mochila) {
 		this.mochila = mochila;
+	}	
+
+	public int getPuntosFuerza() {
+		return puntosFuerza;
 	}
 
+	public void setPuntosFuerza(int puntosFuerza) {
+		this.puntosFuerza = puntosFuerza;
+	}
+
+	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Arrays.hashCode(mochila);
-		result = prime * result + Objects.hash(life, name, score);
+		result = prime * result + Objects.hash(life, name, puntosFuerza, score);
 		return result;
 	}
 
+	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -71,12 +83,13 @@ public class Personaje {
 			return false;
 		Personaje other = (Personaje) obj;
 		return life == other.life && Arrays.equals(mochila, other.mochila) && Objects.equals(name, other.name)
-				&& score == other.score;
+				&& puntosFuerza == other.puntosFuerza && score == other.score;
 	}
 
+	
 	public String toString() {
-		return "Personaje [name=" + name + ", life=" + life + ", score=" + score + ", mochila="
-				+ Arrays.toString(mochila) + "]";
+		return "Personaje [name=" + name + ", life=" + life + ", score=" + score + ", puntosFuerza=" + puntosFuerza
+				+ ", mochila=" + Arrays.toString(mochila) + "]";
 	}
 
 	public void agregar(String agregado) {
